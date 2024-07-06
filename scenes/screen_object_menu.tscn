@@ -102,9 +102,29 @@ size_flags_horizontal = 4
 theme = ExtResource("1_dxbbx")
 button_pressed = true
 
+[node name="Scaling" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Scaling"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Scaling/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_dxbbx")
+text = "Scale"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Scaling/VBoxContainer"]
+layout_mode = 2
+min_value = 0.2
+max_value = 10.0
+step = 0.01
+value = 0.2
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Close" to="." method="_delete_object"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Change Image" to="." method="_request_file"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Gizmo" to="." method="_request_gizmo"]
 [connection signal="toggled" from="VBoxContainer/Booleans/HBoxContainer/PanelContainer/VBoxContainer/CheckBox" to="." method="_set_talks"]
 [connection signal="toggled" from="VBoxContainer/Booleans/HBoxContainer/PanelContainer2/VBoxContainer/CheckBox" to="." method="_set_bounces"]
 [connection signal="toggled" from="VBoxContainer/Booleans/HBoxContainer/PanelContainer3/VBoxContainer/CheckBox" to="." method="_set_blinks"]
+[connection signal="value_changed" from="VBoxContainer/Scaling/VBoxContainer/HSlider" to="." method="_change_scale"]

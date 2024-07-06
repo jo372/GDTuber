@@ -74,9 +74,10 @@ func create_visual():
 		
 	
 func create_talking_atlas():
-	var width = floor(texture.get_width()/2)
-	var height = floor(texture.get_height()/2)
+	var width = floor(float(texture.get_width())/float(2))
+	var height = floor(float(texture.get_height())/float(2))
 	sprite = AnimatedSprite2D.new()
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite.sprite_frames = SpriteFrames.new()
 	for i in range(4):
 		var atlas_texture = AtlasTexture.new()
@@ -124,7 +125,7 @@ func generate_animation():
 
 func _on_animator_stopped(anim_name):
 	if is_talking:
-		bounce_animator.play("bounce")
+		bounce_animator.play(anim_name)
 
 
 func _on_blink_timer_timeout():

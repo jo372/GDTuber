@@ -25,3 +25,7 @@ func _request_file():
 
 func _request_gizmo():
 	emit_signal("request_gizmo", object)
+
+func _change_scale(value: float):
+	object.scale.x = value
+	object.scale.y = value
